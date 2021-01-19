@@ -1,12 +1,13 @@
 [target.armv7-unknown-linux-gnueabihf]
-linker = "/usr/local/oecore-x86_64/sysroots/x86_64-oesdk-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-gcc"
+linker = "arm-linux-gnueabihf-gcc"
 rustflags = [
+  "-C", "target-feature=+crt-static",
   "-C", "link-arg=-march=armv7-a",
   "-C", "link-arg=-marm",
   "-C", "link-arg=-mfpu=neon",
   "-C", "link-arg=-mfloat-abi=hard",
   "-C", "link-arg=-mcpu=cortex-a9",
-  "-C", "link-arg=--sysroot=/usr/local/oecore-x86_64/sysroots/cortexa9hf-neon-oe-linux-gnueabi",
+  "-C", "link-arg=--sysroot=/usr/arm-linux-gnueabihf",
 ]
 
 [build]
