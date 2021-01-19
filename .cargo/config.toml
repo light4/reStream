@@ -10,6 +10,18 @@ rustflags = [
   "-C", "link-arg=--sysroot=/usr/arm-linux-gnueabihf",
 ]
 
+[target.armv7-unknown-linux-musleabihf]
+linker = "arm-linux-gnueabihf-musl-gcc"
+rustflags = [
+  "-C", "target-feature=+crt-static",
+  "-C", "link-arg=-march=armv7-a",
+  "-C", "link-arg=-marm",
+  "-C", "link-arg=-mfpu=neon",
+  "-C", "link-arg=-mfloat-abi=hard",
+  "-C", "link-arg=-mcpu=cortex-a9",
+  "-C", "link-arg=--sysroot=/usr/arm-linux-gnueabihf",
+]
+
 [build]
 # Set the default --target flag
-target = "armv7-unknown-linux-gnueabihf"
+target = "armv7-unknown-linux-musleabihf"
